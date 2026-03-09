@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage('fetch file') {
+            steps {
+               git 'https://github.com/Pranna-Nadar/JenkinsGitDemo.git'
+            }
+        }
+        stage('Build file') {
+            steps {
+                echo 'Building project...'
+                bat 'javac Hello.java'
+            }
+        }
+        stage('executing') {
+            steps {
+                echo 'executing project...'
+                bat 'java Hello'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying project...'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'pipeline executed successfully'
+        }
+        failure {
+            echo 'pipeline failed'
+        }
+    }
+}
