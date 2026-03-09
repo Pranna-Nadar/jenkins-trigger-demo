@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('fetch file') {
             steps {
+                githubPush()
                git 'https://github.com/Pranna-Nadar/JenkinsGitDemo.git'
             }
         }
